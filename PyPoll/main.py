@@ -49,6 +49,8 @@ for Candidate in Votes:
         Winner = Candidate
 
     Results.append(f'{Candidate}: {VotePer[Candidate]}% {Votes[Candidate]}')
+
+# Add Winner line to Results list
 Results.extend([
     sDivider,
     f'Winner: {Winner}'
