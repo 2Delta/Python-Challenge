@@ -63,7 +63,15 @@ sNetTotal = str(f'Total: ${round(NetTotal,2)}')
 sAvgChange = str(f'Average Change: ${AvgChange}')
 sInc = str(f'Greatest Increase in Profits: {IncMonth} ${IncDiff}')
 sDec = str(f'Greatest Decrease in Profits: {DecMonth} ${DecDiff}')
-lines = ['Financial Analysis', '--------------------',sTotMonths, sNetTotal, sAvgChange, sInc, sDec]
+lines = [
+    'Financial Analysis',
+    '--------------------',
+    sTotMonths,
+    sNetTotal,
+    sAvgChange,
+    sInc,
+    sDec
+    ]
 
 # Print ouput strings
 print('\n'.join(lines))

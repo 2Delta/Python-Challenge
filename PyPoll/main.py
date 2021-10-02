@@ -23,7 +23,7 @@ with open(csvpath) as csvfile:
         # Increase Total Votes count
         TotVotes += 1
 
-        # Check if candidate is in Votes dictionary and add additional vote, otherwise create new key with 1 vote
+        # Check if candidate is in Votes dictionary and add additional vote, otherwise create new candidate key with 1 vote
         if str(row[2]) in Votes:
             Votes[str(row[2])] += 1
         else:
@@ -31,8 +31,16 @@ with open(csvpath) as csvfile:
 
 MostVotes = 0
 
-print(TotVotes)
+# Create Results list for text output
+sDivider = '--------------------'
+Results= [
+    'Election Results',
+    sDivider,
+    f'Total Votes: {TotVotes}',
+    sDivider
+]
 
+# Calculate vote percentage of each candidate and determine candidate with most votes as winner
 for Candidate in Votes:
     VotePer[Candidate] = round((Votes[Candidate] / TotVotes)*100,2)
 
@@ -40,6 +48,19 @@ for Candidate in Votes:
         MostVotes = Votes[Candidate]
         Winner = Candidate
 
-    print(f'{Candidate}: {VotePer[Candidate]}% {Votes[Candidate]}')
+    Results.append(f'{Candidate}: {VotePer[Candidate]}% {Votes[Candidate]}')
+Results.extend([
+    sDivider,
+    f'Winner: {Winner}'
+])
 
-print(Winner)
+# Convert each item in Results list into string on new lines
+Results = '\n'.join([str(item) for item in Results])
+
+# Print Results
+print(Results)
+
+# Write results to text file
+txtpath = os.path.join('Analysis','Election_Analysis.txt')
+with open(txtpath,'w') as writetxt:
+    writetxt.write(Results)
