@@ -48,12 +48,14 @@ for Candidate in Votes:
         MostVotes = Votes[Candidate]
         Winner = Candidate
 
+    # Add each candidates percentage and votes to the Results list
     Results.append(f'{Candidate}: {VotePer[Candidate]}% {Votes[Candidate]}')
 
 # Add Winner line to Results list
 Results.extend([
     sDivider,
-    f'Winner: {Winner}'
+    f'Winner: {Winner}',
+    sDivider
 ])
 
 # Convert each item in Results list into string on new lines
